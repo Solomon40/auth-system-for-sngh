@@ -1,30 +1,26 @@
-<!DOCTYPE HTML5>
-
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+<?php include_once('lib/header.php'); ?>
     <title> SNGH: Hospital of the Ignorant </title>
-
 </head>
 
 <body>
-
-<?php 
-
-phpversion();
-echo phpversion();
-?>
-
-Welcome to Start.NG Hospital: Hospital for the Ignorant <br />
-Come as you are, it is for all men/women. And completely free! <hr />
-
-   <?php
+    <div class="header">
+        <h2> Home Page </h2>
+    </div>
+    
+<!-- Welcome Message -->
+Welcome to Start.NG Hospital: Hospital of the Ignorant <hr />
+    <p>
+    This is a Specialist Hospital to cure ignorance<br />
+    Come as you are. It is for all men/women; and completely free! 
+    </p>
+    <?php 
+        if(isset($_SESSION['logged_in'])) {
+             print_r($_SESSION['logged_in']);
+        }
+    ?> 
+    <?php
         include_once('lib/menu.php');
     ?>
-
 </body>
 
 </html>
