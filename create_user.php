@@ -1,24 +1,18 @@
-<?php
-include_once('lib/header.php'); 
-?>
-    <title> Register at SNGH: Hospital for the Ignorant </title>
-</head>
+<?php 
+include_once('lib/header.php'); ?>
 
+    <title>Super Admin SNGH: Hospital of the Ignorant</title>
+</head>
 <body>
-<!-- Some instructions -->
     <div class="header">
-        <h2> Register </h2>
+        <h3> Create User </h3>
     </div>
     <div class="content">
-    <strong> Join SNGH, kindly register below: </strong> <br />
-    <span style= 'color:red'>* required field</span> <br />
+        <strong> Kindly fill in the details: </strong> <br />
+        <span style= 'color:red'>* required field</span> <br />
     </div>
-<!-- Registration form begins here -->
-    <div class="menu">
-        <a href="index.php"> Home </a> |
-        <a href="Forgot.php"> Forgot Password  </a>
-    </div>
-    <form method="POST" action="processregister.php">
+
+    <form method="POST" action="processcreate.php">
         <?php
         //Check if error message is available and print it out
         if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
@@ -141,11 +135,9 @@ include_once('lib/header.php');
         </div>
         <div class="input-group">
         <p>
-            <button class="btn" type="submit"> Proceed </button>
+            <button class="btn" type="submit"> Create </button>
         </p>
-        <p>
-            Already a member? <a href ="login.php"> Login </a>
-        </p>
+        
         </div>
         <!--save date and time registered-->
         <input 
@@ -161,7 +153,6 @@ include_once('lib/header.php');
             ?>
         type="hidden" name="time" />
     </form>
-    
 </body>
 
 </html>

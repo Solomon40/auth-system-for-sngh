@@ -5,7 +5,7 @@
         <?php if(!isset($_SESSION['logged_in'])){ //if not logged in, show: ?>
         
         <a href="Login.php"> Login </a> |
-        <a href="Register.php"> Register </a> 
+        <a href="Register.php"> Register </a> |
         <a href="Forgot.php"> Forgot Password  </a>
         
         <?php } else{ ?> 

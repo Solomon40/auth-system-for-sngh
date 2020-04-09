@@ -6,22 +6,24 @@ include_once('lib/header.php');
 </head>
 
 <body>
-    <?php
-        //Check if Success message is available and print it out
-        if(isset($_SESSION['message']) && !empty($_SESSION['message'])){
-        echo "<span style = 'color:green'>" . $_SESSION['message'] . "</span>";
-        }
-        session_destroy();
-    ?>
+    
     <div class="header">
         <h2> Login </h2>
     </div>
     <div class="content">
-    <p> Kindly login below  </p>
+        <?php
+            //Check if Success message is available and print it out
+            if(isset($_SESSION['message']) && !empty($_SESSION['message'])){
+            echo "<span style = 'color:green'>" . $_SESSION['message'] . "</span>";
+            }
+            session_destroy();
+        ?>
+        <p> Kindly login below  </p>
     </div>
-    <?php
-        include_once('lib/menu.php');
-    ?>
+    <div class="menu">
+        <a href="index.php"> Home </a> |
+        <a href="Forgot.php"> Forgot Password  </a>
+    </div>
     <form method="POST" action="processlogin.php">
         <?php
         //Check if error message is available and print it out
@@ -51,6 +53,9 @@ include_once('lib/header.php');
         </div>
         <p>
             <button class="btn" type="submit"> Login </button>
+        </p>
+        <p>
+            New member? <a href ="register.php"> Sign Up </a>
         </p>
 
     </form>

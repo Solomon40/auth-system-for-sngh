@@ -14,17 +14,28 @@ if(!isset($_SESSION['logged_in'])) {
     <div class="header">
         <h3> Dashboard </h3>
     </div>
+    <div class="menu">
+        <a href="index.php"> Home </a> |
+         
+        <a href="Logout.php"> Logout </a>|
+        <a href="reset.php"> Change Password  </a> |
 
-<p>Welcome back, <?php  echo $_SESSION['full_name']; ?> !</p>
-<?php  echo $_SESSION['logged_in']; ?>
-Department: <?php echo $_SESSION['dept']; ?> <br />
-Logged In: <?php echo " " . date("h:ia") ?>  on <?php echo " " . date("l") . ", ". date("d-m-Y") . "."?>
-Registered: <?php echo $_SESSION['time'] ?> on <?php echo " " .$_SESSION['date']; ?>
+        <a href="create_user.php"> Add User  </a>
+    </div>
+    <div class="content">
+        <div class="error success">
+            <h3> <?php  echo $_SESSION['logged_in']; ?> </h3>
+        </div>
+        <p>Welcome back, <?php  echo $_SESSION['full_name']; ?> !</p>
+        <br />
+        <div class="profile_info">
+            Department: <?php echo $_SESSION['dept']; ?> <br />
+            Logged In: <?php echo " " . date("h:ia") ?>  on <?php echo " " . date("l") . ", ". date("d-m-Y") . "."?>  <br />
+            Registered: <?php echo $_SESSION['time'] ?> on <?php echo " " .$_SESSION['date']; ?>
+        </div>
+        <h1> <?php  echo $_SESSION['role']; ?> </h1>
+    </div>
 
-<h1> <?php  echo $_SESSION['role']; ?> (MD) </h1>
-
-
-<?php include_once("lib/menu.php") ?>
 </body>
 
 </html>
