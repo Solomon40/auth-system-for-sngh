@@ -16,6 +16,7 @@ if(!user_is_logged_in()) {
     </div>
     <div class="menu">
         <?php include_once("lib/menu.php") ?>
+        <a href="view_app.php"> View Appointments </a>
     </div>
     <div class="content">
         <div class="error success">

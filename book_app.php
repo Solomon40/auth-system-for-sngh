@@ -1,4 +1,4 @@
-<?php include_once('lib/header.php'); require('functions/alert.php'); ?>
+<?php include_once('lib/header.php'); require('functions/alert.php'); require('functions/users.php');  ?>
     <title> Book Appointment | SNGH: Hospital of the Ignorant </title>
 </head>
 <body>
@@ -8,10 +8,19 @@
 
     <form method="POST" action="processappointment.php">
         <?php
+        
         //Check if error/message is available and print it out
         error(); message();
         session_destroy();
         ?>
+        <input
+            <?php
+            if(user_is_logged_in()) { 
+                echo "value=" . $_SESSION['full_name'] ;
+            }
+            ?>
+         type="hidden" name="full_name"  />
+         
         <div class="input-group">
         <p>
             <label> Date of Appointment </label>
@@ -22,7 +31,7 @@
                     echo "value=" . $_SESSION['date'];
                 }
                 ?>
-            type="text" name="date" placeholder="Date" /> 
+            type="date" name="date" placeholder="Date" /> 
             <span style= 'color:red'>*</span>
         </p>
         </div>
@@ -36,7 +45,7 @@
                     echo "value=" . $_SESSION['time'];
                 }
                 ?>
-            type="text" name="time" placeholder="Time" /> 
+            type="time" name="time" placeholder="Time" /> 
             <span style= 'color:red'>*</span>
         </p>
         </div>
@@ -61,20 +70,33 @@
             <span style= 'color:red'>*</span>
         </p>
         </div>
+        
         <div class="input-group">
         <p>
             <label> Department of Appointment </label>
-            <input 
-                <?php
-                //Check if Email is available after error message (ie if initially inputed by user) and hold it in 
-                if(isset($_SESSION['department'])){
-                    echo "value=" . $_SESSION['department'];
-                }
-                ?>
-            type="text" name=" department" placeholder="Department" /> 
+            <select name="department" >
+                <option value=""> Select One </option>
+                <option
+                    <?php
+                    //Check if Blood Lab is available after error message (ie if initially inputed by user) and hold it in 
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'Blood Lab)'){
+                        echo "selected";
+                    }
+                    ?>
+                > Blood Lab </option>
+                <option
+                    <?php
+                    //Check if Patient is available after error message (ie if initially inputed by user) and hold it in 
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'X-Ray Lab'){
+                        echo "selected";
+                    }
+                    ?>
+                > X-Ray Lab </option>
+            </select>
             <span style= 'color:red'>*</span>
         </p>
         </div>
+        
         <p>
             <button class="btn" type="submit"> Submit </button>
         </p>

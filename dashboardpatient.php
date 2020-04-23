@@ -23,7 +23,7 @@ if(!user_is_logged_in()) {
         <div class="error success">
             <h3> <?php  echo $_SESSION['logged_in']; ?> </h3>
         </div>
-        <p>Welcome back, <?php  echo $_SESSION['full_name']; ?> !</p> 
+        <p>Welcome back, <?php  get_details("full_name"); ?> !</p> 
         <br />
         <div class="profile_info">
             Department: <?php echo $_SESSION['dept']; ?> <br />
@@ -31,7 +31,7 @@ if(!user_is_logged_in()) {
             Registered: <?php echo $_SESSION['time'] ?> on <?php echo " " . $_SESSION['date']; ?>
         </div>
         <h1> <?php  echo $_SESSION['role']; ?> </h1>
-
+    
     </div>
 </body>
 
