@@ -1,8 +1,8 @@
 <?php
-    include_once('lib/header.php');
+    include_once('lib/header.php'); require('functions/alert.php');
 ?>
 
-    <title> Reset Password for SNGH: Hospital for the Ignorant </title>
+    <title> Forgot Password | SNGH: Hospital for the Ignorant </title>
 
 </head>
 
@@ -20,10 +20,8 @@
     </div>
     <form method="POST" action="processforgot.php">
         <?php
-            //Check if error message is available and print it out
-            if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-                echo "<span style = 'color:red'>" . $_SESSION['error'] . "</span>";
-            }
+            //Check if error/message is available and print it out
+            error(); message();
             session_destroy(); 
         ?>
         <div class="input-group">   

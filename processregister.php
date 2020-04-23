@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); require('functions/alert.php');
 
 //To complete Registration:
 //(1) Collect data
@@ -28,17 +28,17 @@ strlen($first_name);
 strlen($last_name);
 
 if($correct_first_name == 1 || $correct_last_name == 1){
-    $_SESSION['error'] = "Name can not contain numbers. Please review";
+    set_alert("error", "Name can not contain numbers. Please review");
     header("Location: register.php ");
 }   
 elseif(strlen($first_name) < 2 || strlen($last_name) < 2){
-    $_SESSION['error'] = "Name can not be less than two characters. Please review";
+    set_alert("error", "Name can not be less than two characters. Please review");
     header("Location: register.php ");
 }  
 else{
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL))    {
-        $_SESSION['error'] = "Invalid email format";
+        set_alert("error", "Invalid email format");
         header("Location: register.php ");
     }
     else{
@@ -49,7 +49,7 @@ else{
             if (1 < $error_count ) {
                 $session_error .= "s";
             }
-            $_SESSION['error'] = $session_error . " in your submission. Please review";
+            set_alert("error", $session_error . " in your submission. Please review");
             header("Location: register.php ");
 
             //While redirected, hold data inputs after error message is printed 
@@ -87,7 +87,7 @@ else{
             $current_user = $all_users[$counter];
 
             if($current_user == $email . ".json") {
-                $_SESSION['error'] = "Your Registration failed. User already exists";
+                set_alert("error", "Your registration failed. User already registered");
                 header("Location: register.php ");
                 die();
             }
@@ -96,7 +96,7 @@ else{
 
         //Save data in database and redirect to Login page with Success message
         file_put_contents("db/users/" . $email . ".json", json_encode($user_object));
-        $_SESSION['message'] = "You are successfully registered, " . $first_name . "!";
+        set_alert("message", "You are successfully registered, " . $first_name . "!");
         header("Location: login.php ");
 
         }

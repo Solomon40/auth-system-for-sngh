@@ -1,48 +1,76 @@
 <?php
-    include_once('lib/header.php');
+    include_once('lib/header.php'); 
+    require('functions/alert.php');
+    require('functions/users.php');
     //If token is not set, access to page should be restricted
-    if(!isset($_GET['token']) && !isset($_SESSION['token'])){
+    if(!user_is_logged_in() && !token_is_set()){
         $_SESSION['error'] = "You are not authorized to view the reset page!";
         header("Location: login.php ");
     }
 ?>
 
-    <title> Reset Password for SNGH: Hospital of the Ignorant </title>
+    <title> Reset Password | SNGH: Hospital of the Ignorant </title>
 
 </head>
 
 <body>
-    <h3> Reset Password </h3>
-
-Hello, kindly enter a new password for your account:
+    <div class="header">
+        <h2> Reset Password </h2>
+    </div>
+    <div class="content">
+    Kindly enter a new password for your account:
+    </div>
     <form method="POST" action="processreset.php">
         <?php
-        //Check if error message is available and print it out
-        if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-        echo "<span style = 'color:red'>" . $_SESSION['error'] . "</span>";
-        }
+        //Check if error/message is available and print it out
+        error(); message();
         session_destroy();
         ?>
-        <input 
-            <?php
-            if(isset($_SESSION['token']) ){
-            echo "value='" . $_SESSION['token'] . "'";
-            }
-            else{
-                echo "value='" . $_GET['token'] . "'";
-            }
+        <?php  if(!user_is_logged_in()) { ?>
+        <input
+            <?php 
+                //Check for token associated with email
+                if(token_set_in_sess() ){
+                    echo "value='" . $_SESSION['token'] . "'";
+                }
+                else{
+                    echo "value='" . $_GET['token'] . "'";
+                }
             ?>
         type="hidden" name="token"  />
-        <p>
+        <?php } ?>
+        <div class="input-group">
+
+        <p> 
             <label> Email </label>
-            <input readonly value=[email] type="text" name="email" placeholder="Email" /> <br />
+            <input 
+                <?php //Check for and display email
+                if(isset($_SESSION['email']) ){
+                    echo "value='" . $_SESSION['email'] . "'";
+                }
+                else{
+                    echo "value='" . $_GET['key'] . "'";
+                }
+                ?>
+            readonly type="text" name="email" placeholder="Email" /> <br />
         </p>
+        </div>
+        <div class="input-group">
+
         <p>
             <label> New Password </label>
-            <input type="text" name="password" placeholder="Password" /> <br />
+            <input type="password" name="password" placeholder="Enter New Password" /> <br />
         </p>
+        </div>
+        <div class="input-group">
+
         <p>
-            <button type="submit"> Reset Password </button>
+            <label> Confirm Password </label>
+            <input type="password" name="conf_password" placeholder="Confirm New Password" /> <br />
+        </p>
+        </div>
+        <p>
+            <button class="btn" type="submit"> Reset Password </button>
         </p>
 
     </form>

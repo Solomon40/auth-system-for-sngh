@@ -1,13 +1,13 @@
 <?php 
-include_once('lib/header.php'); 
+include_once('lib/header.php'); require('functions/alert.php'); require('functions/users.php');
 
 //Must be Logged In to access Dashboard page
-if(!isset($_SESSION['logged_in'])) {
+if(!user_is_logged_in()) {
     header("Location: login.php");
-    $_SESSION['error'] = "You must be Logged In to view the Dashbboard!";
+    set_alert("error", "You must be Logged In to view the Dashboard!");
 }
 ?>
-    <title>Dashboard SNGH: Hospital of the Ignorant</title>
+    <title>Dashboard | SNGH: Hospital of the Ignorant</title>
 </head>
 
 <body>

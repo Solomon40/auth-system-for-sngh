@@ -1,8 +1,8 @@
 <?php
-include_once('lib/header.php');
+include_once('lib/header.php'); require('functions/alert.php');
 
 ?>
-    <title> Login to SNGH: Hospital of the Ignorant </title>
+    <title> Login | SNGH: Hospital of the Ignorant </title>
 </head>
 
 <body>
@@ -13,9 +13,7 @@ include_once('lib/header.php');
     <div class="content">
         <?php
             //Check if Success message is available and print it out
-            if(isset($_SESSION['message']) && !empty($_SESSION['message'])){
-            echo "<span style = 'color:green'>" . $_SESSION['message'] . "</span>";
-            }
+            message();
             session_destroy();
         ?>
         <p> Kindly login below  </p>
@@ -27,10 +25,7 @@ include_once('lib/header.php');
     <form method="POST" action="processlogin.php">
         <?php
         //Check if error message is available and print it out
-        if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-        echo "<span style = 'color:red'>" . $_SESSION['error'] . "</span>";
-        }
-        
+        error();
         ?>
        <div class="input-group">
         <p>

@@ -1,5 +1,6 @@
 <?php
-session_start();
+include_once('lib/header.php'); require('functions/alert.php');
+
 
 //To process forgotten password:
 //(1) Collect email
@@ -12,7 +13,7 @@ $email = $_POST['email'] != "" ? $_POST['email'] : $error_count++;
 if(0 < $error_count) {
     //redirect to Register page with error message
     
-    $_SESSION['error'] = "Email cannot be blank";
+    set_alert("error", "Email cannot be blank");
     header("Location: forgot.php ");
 } else{ //verify if email is in database
     $all_users = scandir("db/users/"); 
@@ -41,24 +42,28 @@ if(0 < $error_count) {
     
         if($current_user == $email . ".json") {
         //send email and redirect to password reset page
+        $link = "<a href='localhost/sngh/reset.php?token=" . $token . "&key=" .$email . "> Reset Link </a>"; 
+
         $subject = "Password Reset Link";
-        $message = "A password reset has been initiated for your account on SNGH: Hospital of the Ignorant from this email address. Please ignore this message if you did not initiate the reset, otherwise visit localhost/sngh/reset.php";
+        $message = "A password reset has been initiated for your account on SNGH: Hospital of the Ignorant from this email address. Please ignore this message if you did not initiate the reset, otherwise visit " . $link . "to reset your password." ;
         $headers = "From: no-reply@ymail.com" . "\r\n" .
         "Cc: me@ymail.com"; 
 
         //store $token in database
         file_put_contents("db/tokens/" . $email . ".json", json_encode(['token'=>$token]));
+        
 
         //send mail
-        $try = mail($email, $token, $subject, $message, $headers);
+        $try = mail($email,$subject,$message,$headers);
+       
 
         if($try){
-            //send success message
-            $_SESSION['message'] = "A password reset link has been sent to your email " . $email;
-            header("Location: reset.php ");
+            //display success message
+            set_alert("message", "A password reset link has been sent to your email " . $email);
+            header("Location: login.php ");
         } else{
-            //send error message
-            $_SESSION['error'] = "Something went wrong. Password reset link not sent";
+            //display error message
+            set_alert("error", "Something went wrong. Password reset link not sent");
             header("Location: forgot.php ");
         }
 
@@ -66,7 +71,7 @@ if(0 < $error_count) {
         }
         
     }
-    $_SESSION['error'] = "Email " . $email . " does not exist";
+    set_alert("error", "Email " . $email . " is not registered");
     header("Location: forgot.php ");
 
 }

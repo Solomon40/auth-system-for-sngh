@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); require('functions/alert.php');
 
 //To complete User creation:
 //(1) Collect data
@@ -28,17 +28,17 @@ strlen($first_name);
 strlen($last_name);
 
 if($correct_first_name == 1 || $correct_last_name == 1){
-    $_SESSION['error'] = "Name can not contain numbers. Please review";
+    set_alert("error", "Name can not contain numbers. Please review");
     header("Location: create_user.php ");
 }   
 elseif(strlen($first_name) < 2 || strlen($last_name) < 2){
-    $_SESSION['error'] = "Name can not be less than two characters. Please review";
+    set_alert("error", "Name can not be less than two characters. Please review");
     header("Location: create_user.php ");
 }  
 else{
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL))    {
-        $_SESSION['error'] = "Invalid email format";
+        set_alert("error", "Invalid email format");
         header("Location: create_user.php ");
     }
     else{
@@ -49,7 +49,7 @@ else{
             if (1 < $error_count ) {
                 $session_error .= "s";
             }
-            $_SESSION['error'] = $session_error . " in your submission. Please review";
+            set_alert("error", $session_error . " in your submission. Please review");
             header("Location: create_user.php ");
 
             //While redirected, hold data inputs after error message is printed 
@@ -87,7 +87,7 @@ else{
             $current_user = $all_users[$counter];
 
             if($current_user == $email . ".json") {
-                $_SESSION['error'] = "User creation failed. User already exists";
+                set_alert("error", "User creation failed. User already exists");
                 header("Location: create_user.php ");
                 die();
             }
@@ -96,7 +96,7 @@ else{
 
         //Save data in database and redirect to Login page with Success message
         file_put_contents("db/users/" . $email . ".json", json_encode($user_object));
-        $_SESSION['message'] = "User successfully created !";
+        set_alert("message", "User successfully created !");
         header("Location: login.php ");
 
         }

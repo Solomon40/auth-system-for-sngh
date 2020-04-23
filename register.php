@@ -1,14 +1,16 @@
 <?php
-include_once('lib/header.php'); 
+include_once('lib/header.php'); require('functions/alert.php');
 ?>
-    <title> Register at SNGH: Hospital for the Ignorant </title>
+    <title> Register | SNGH: Hospital for the Ignorant </title>
 </head>
 
 <body>
-<!-- Some instructions -->
+
     <div class="header">
         <h2> Register </h2>
     </div>
+
+<!-- Some instructions before form-->
     <div class="content">
     <strong> Join SNGH, kindly register below: </strong> <br />
     <span style= 'color:red'>* required field</span> <br />
@@ -20,10 +22,8 @@ include_once('lib/header.php');
     </div>
     <form method="POST" action="processregister.php">
         <?php
-        //Check if error message is available and print it out
-        if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-        echo "<span style = 'color:red'>" . $_SESSION['error'] . "</span>";
-        }
+        //Check if error/message is available and print it out
+        error(); message();
         session_destroy();
         ?>
         <div class="input-group">
@@ -64,7 +64,7 @@ include_once('lib/header.php');
                     echo "value=" . $_SESSION['email'];
                 }
                 ?>
-            type="text" name="email" placeholder="Email" /> 
+            type="text" name=" email" placeholder="Email" /> 
             <span style= 'color:red'>*</span>
         </p>
         </div>
@@ -147,7 +147,7 @@ include_once('lib/header.php');
             Already a member? <a href ="login.php"> Login </a>
         </p>
         </div>
-        <!--save date and time registered-->
+        <!--save date and time of registration-->
         <input 
             <?php
                 $date_registered = date("l") . ", " . date("d-m-Y") . ".";

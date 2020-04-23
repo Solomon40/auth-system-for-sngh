@@ -1,4 +1,4 @@
-<?php include_once('lib/header.php'); ?>
+<?php include_once('lib/header.php'); require('functions/alert.php'); ?>
     <title> SNGH: Hospital of the Ignorant </title>
 </head>
 

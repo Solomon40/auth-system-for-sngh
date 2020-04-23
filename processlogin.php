@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); require('functions/alert.php');
 
 
 //To complete Login:
@@ -15,7 +15,7 @@ $password = $_POST['password'] != "" ? $_POST['password'] : $error_count++;
 
 //Validate the data
 if(!filter_var($email, FILTER_VALIDATE_EMAIL))    {
-    $_SESSION['error'] = "Invalid email format";
+    set_alert("error", "Invalid email format");
     header("Location: login.php ");
     
 }
@@ -27,7 +27,7 @@ if(0 < $error_count) { //if field is empty
     if (1 < $error_count ) {
         $session_error .= "s";
     }
-    $_SESSION['error'] = $session_error . " in your submission. Please review";
+    set_alert("error", $session_error . " in your submission. Please review");
     header("Location: login.php ");
 
     //While redirected, hold email input after error message is printed 
@@ -54,6 +54,7 @@ else{ //Attempt validating if user (email) exists in database
                 if($role == 'Patient'){
                     $_SESSION['logged_in'] = "User ID: " . $user_object->id;
                     $_SESSION['full_name'] = " " . $user_object->first_name . " " . $user_object->last_name;
+                    $_SESSION['email'] = $email;
                     $_SESSION['role'] = $role;
                     $_SESSION['dept'] = " " . $user_object->department;
                     $_SESSION['date'] = " " . $user_object->date;
@@ -63,6 +64,7 @@ else{ //Attempt validating if user (email) exists in database
                 }elseif($role == 'Medical Team (MT)') {
                     $_SESSION['logged_in'] = "User ID: " . $user_object->id;
                     $_SESSION['full_name'] = " " . $user_object->first_name . " " . $user_object->last_name;
+                    $_SESSION['email'] = $email;
                     $_SESSION['role'] = $role;
                     $_SESSION['dept'] = " " . $user_object->department;
                     $_SESSION['date'] = " " . $user_object->date;
@@ -70,22 +72,23 @@ else{ //Attempt validating if user (email) exists in database
                     header("Location: dashboardmt.php");
                     die();
                 }else{
-                //redirect to Medical Director (Super Admin) Dashboard and print ID
-                $_SESSION['logged_in'] = "User ID: " . $user_object->id;
-                $_SESSION['full_name'] = " " .$user_object->first_name . " " . $user_object->last_name;
-                $_SESSION['role'] = $role;
-                $_SESSION['dept'] = " " . $user_object->department;
-                $_SESSION['date'] = " " . $user_object->date;
-                $_SESSION['time'] = " " . $user_object->time;
-                header("Location: dashboard.php");
-                die();
-                }
+                    //redirect to Medical Director (Super Admin) Dashboard and print ID
+                    $_SESSION['logged_in'] = "User ID: " . $user_object->id;
+                    $_SESSION['full_name'] = " " .$user_object->first_name . " " . $user_object->last_name;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['role'] = $role;
+                    $_SESSION['dept'] = " " . $user_object->department;
+                    $_SESSION['date'] = " " . $user_object->date;
+                    $_SESSION['time'] = " " . $user_object->time;
+                    header("Location: dashboard.php");
+                    die();
+                }    
             }
         }
 
     }  
 
-    $_SESSION['error'] = "Invalid email or Password";
+    set_alert("error", "Invalid email or Password");
     header("Location: login.php ");
 }
 }

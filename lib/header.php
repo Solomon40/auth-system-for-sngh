@@ -8,3 +8,5 @@
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+    <script src="js/scripts.js"></script>

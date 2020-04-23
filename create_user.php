@@ -1,7 +1,7 @@
 <?php 
-include_once('lib/header.php'); ?>
+include_once('lib/header.php'); require('functions/alert.php'); ?>
 
-    <title>Super Admin SNGH: Hospital of the Ignorant</title>
+    <title>Super Admin | SNGH: Hospital of the Ignorant</title>
 </head>
 <body>
     <div class="header">
@@ -14,10 +14,8 @@ include_once('lib/header.php'); ?>
 
     <form method="POST" action="processcreate.php">
         <?php
-        //Check if error message is available and print it out
-        if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-        echo "<span style = 'color:red'>" . $_SESSION['error'] . "</span>";
-        }
+        //Check if error/message is available and print it out
+        error(); message();
         session_destroy();
         ?>
         <div class="input-group">
