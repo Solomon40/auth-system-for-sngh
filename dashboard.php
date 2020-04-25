@@ -36,6 +36,49 @@ if(!user_is_logged_in()) {
         <h1> <?php  echo $_SESSION['role']; ?> </h1>
     </div>
 
+    <section>
+    <div id="table">
+        <!-- <a class="btn btn-outline-danger" href="dashboard.php" style="margin: 20px">&#x2190; Back</a> -->
+        <?php
+        $patient_rows = get_patients();
+        $staff_rows = get_staff();
+        ?>
+        <table class="table table-bordered">
+            <caption> All Staff </caption>
+            <thead class="thead-dark ">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Date of Registration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php echo $staff_rows; ?>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <caption> All Patients </caption>
+            <thead class="thead-dark ">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Date of Registration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php echo $patient_rows; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
+
 </body>
 
 </html>

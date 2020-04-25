@@ -1,5 +1,5 @@
 <?php
-include_once('lib/header.php'); require('functions/alert.php'); require('functions/users.php'); require('functions/get.php');
+include_once('lib/header.php'); require('functions/alert.php'); require('functions/users.php'); require('functions/appointments.php');
 if(!user_is_logged_in() || $_SESSION['role'] !== "Medical Team (MT)") {
     header("Location: login.php");
     set_alert("error", "You must be Logged In to view appointments!");

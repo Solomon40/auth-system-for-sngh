@@ -67,3 +67,63 @@ function get_details($type = "") {
     }
 
 }
+
+function get_staff(){
+
+    $staff_rows = "";
+    $staff_row_num = 0;
+    
+    $all_users = scandir('db/users/');
+    $num = count($all_users);
+    for ($i = 2; $i < $num; $i++) {
+        
+        $user = json_decode(file_get_contents('db/users/' . $all_users[$i]));
+        
+        if ($user->designation == "Medical Team (MT)") {
+            $staff_row_num++;
+            $staff_rows .= "
+             <tr>
+                <th scope='row'>$staff_row_num</th>
+                <td>$user->first_name $user->last_name</td>
+                 <td>$user->gender</td>
+                <td>$user->designation</td>
+                <td>$user->department</td>
+                <td>$user->date</td>
+            </tr>
+            ";
+        } 
+    }
+    if ($staff_rows == '') {
+        return false;
+    }
+    return $staff_rows;
+}
+
+function get_patients(){
+    $patient_rows = "";
+    $patient_row_num = 0;
+
+    $all_users = scandir('db/users/');
+    $num = count($all_users);
+    for ($i = 2; $i < $num; $i++) {
+        
+        $user = json_decode(file_get_contents('db/users/' . $all_users[$i]));
+        if ($user->designation == "Patient") {
+            $patient_row_num++;
+            $patient_rows .= "
+             <tr>
+                <th scope='row'>$patient_row_num</th>
+                <td>$user->first_name $user->last_name</td>
+                  <td>$user->gender</td>
+                <td>$user->designation</td>
+                <td>$user->department</td>
+                <td>$user->date</td>
+            </tr>
+            ";
+        }
+    }
+    if ($patient_rows == '') {
+        return false;
+    }
+    return $patient_rows;
+}

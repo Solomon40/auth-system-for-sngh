@@ -1,5 +1,5 @@
 <?php 
-session_start(); require('functions/get.php');
+session_start(); require('functions/appointments.php');
 
 
 $department = $_POST['department'] ;

@@ -1,5 +1,5 @@
 <?php
-include_once('lib/header.php'); require('functions/alert.php'); require('functions/users.php'); require('functions/get.php');
+include_once('lib/header.php'); require('functions/alert.php'); require('functions/users.php'); require('functions/appointments.php');
 
 ?>
 </head>

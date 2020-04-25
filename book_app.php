@@ -87,11 +87,11 @@
                 <option
                     <?php
                     //Check if Patient is available after error message (ie if initially inputed by user) and hold it in 
-                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'X-Ray Lab'){
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'X-ray Lab'){
                         echo "selected";
                     }
                     ?>
-                > X-Ray Lab </option>
+                > X-ray Lab </option>
             </select>
             <span style= 'color:red'>*</span>
         </p>
