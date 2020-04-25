@@ -38,7 +38,6 @@ if(!user_is_logged_in()) {
 
     <section>
     <div id="table">
-        <!-- <a class="btn btn-outline-danger" href="dashboard.php" style="margin: 20px">&#x2190; Back</a> -->
         <?php
         $patient_rows = get_patients();
         $staff_rows = get_staff();

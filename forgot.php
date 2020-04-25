@@ -1,5 +1,5 @@
 <?php
-    include_once('lib/header.php'); require('functions/alert.php');
+    include_once('lib/header.php'); require('functions/alert.php'); require('functions/users.php');
 ?>
 
     <title> Forgot Password | SNGH: Hospital for the Ignorant </title>
