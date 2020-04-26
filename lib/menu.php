@@ -27,13 +27,15 @@
     <nav class="my-2 my-md-0 mr-md-3">
 
         <?php if(!user_is_logged_in()){ //if not logged in, show: ?>
-        <a class="p-2 text-dark" href="#">Features</a>
-        <a class="p-2 text-dark" href="#">Enterprise</a>
+        <a class="p-2 text-dark" href="#">About</a>
+        <a class="p-2 text-dark" href="#">FAQs</a>
+        <a class="p-2 text-dark" href="#">Legal</a>
+        <a class="p-2 text-dark" href="#">Contact</a>
+
         
         <?php } else{ ?>
-        <a class="p-2 text-dark" href="#">Support</a>
+        <a class="p-2 text-dark" href="#">Change Password</a>
         <a class="p-2 text-dark" href="#">Pricing</a>
         <?php } ?>
     </nav>
-    <a class="btn btn-outline-primary" href="#">Sign up</a>
 </div>
