@@ -5,6 +5,9 @@ include_once('lib/header.php'); require('functions/alert.php');
 </head>
 
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
 
     <div class="header">
         <h2> Register </h2>
@@ -16,10 +19,7 @@ include_once('lib/header.php'); require('functions/alert.php');
     <span style= 'color:red'>* required field</span> <br />
     </div>
 <!-- Registration form begins here -->
-    <div class="menu">
-        <a href="index.php"> Home </a> |
-        <a href="Forgot.php"> Forgot Password  </a>
-    </div>
+   
     <form method="POST" action="processregister.php">
         <?php
         //Check if error/message is available and print it out
@@ -162,6 +162,10 @@ include_once('lib/header.php'); require('functions/alert.php');
         type="hidden" name="time" />
     </form>
     
+<?php
+    include_once('lib/footer.php');
+?>
+
 </body>
 
 </html>

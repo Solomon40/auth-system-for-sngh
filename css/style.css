@@ -1,12 +1,11 @@
-/*  * {margin: 0px; padding: 0px; } */
+  * {margin: 0px; padding: 0px; } 
 
-
-/* body{
+ body{
     font-size: 120%;
     background: #F8F8FF;
-}  */ 
+}  
 
-/* .header{
+.header{
     width: 40%;
     margin: 50px auto 0px;
     color: white;
@@ -16,12 +15,8 @@
     border-bottom: none;
     border-radius: 1px;
     padding: 20px;
-} */
+} 
 
-/*
-.menu{
-    text-align: center;
-}
 form, .content{
     width: 40%;
     margin: 0px auto;
@@ -29,9 +24,7 @@ form, .content{
     border: 1px solid #B0C4DE;
     background: white;
     border-radius: 0px 0px 10px 10px;
-} */
-
-/*
+} 
 .input-group{
     margin: 10px 0px 10px 0px;
 }
@@ -51,9 +44,7 @@ form, .content{
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid gray;
-}  */
-
-/*
+}  
 .btn{
     padding: 10px;
     font-size: 15px;
@@ -93,8 +84,12 @@ form, .content{
     content: "";
     display: block;
     clear: both;
-}  */
+}  
 
+.img{
+  object-position: center;
+  float: inherit;
+}
 
 .bd-placeholder-img {
     font-size: 1.125rem;
@@ -134,4 +129,4 @@ form, .content{
 
 
 
-  .bg{background:#7b7b7c 50% no-repeat url(back-pool.jpg); background-size:cover;-webkit-animation:30s linear infinite a;animation:30s linear infinite a;background-size:cover;height:100%;left:0;position:absolute;top:0;width:calc(100vw + 500px)}
+  /*.bg{background:#7b7b7c 50% no-repeat url(back-pool.jpg); background-size:cover;-webkit-animation:30s linear infinite a;animation:30s linear infinite a;background-size:cover;height:100%;left:0;position:absolute;top:0;width:calc(100vw + 500px)} */

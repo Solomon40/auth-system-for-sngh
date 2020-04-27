@@ -11,17 +11,13 @@ if(!user_is_logged_in()) {
 </head>
 
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
     <div class="header">
         <h3> Dashboard </h3>
     </div>
-    <div class="menu">
-        <a href="index.php"> Home </a> |
-         
-        <a href="Logout.php"> Logout </a>|
-        <a href="reset.php"> Change Password  </a> |
-
-        <a href="create_user.php"> Add User  </a>
-    </div>
+    
     <div class="content">
         <div class="error success">
             <h3> <?php  echo $_SESSION['logged_in']; ?> </h3>

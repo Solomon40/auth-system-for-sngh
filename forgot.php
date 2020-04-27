@@ -7,7 +7,10 @@
 </head>
 
 <body>
-<div class="header">
+    <?php
+        include_once('lib/menu.php');
+    ?>
+    <div class="header">
         <h3> Forgot Password </h3>
     </div>
     <div class="content">

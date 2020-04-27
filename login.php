@@ -6,6 +6,9 @@ include_once('lib/header.php'); require('functions/alert.php');
 </head>
 
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
     
     <div class="header">
         <h2> Login </h2>
@@ -18,10 +21,7 @@ include_once('lib/header.php'); require('functions/alert.php');
         ?>
         <p> Kindly login below  </p>
     </div>
-    <div class="menu">
-        <a href="index.php"> Home </a> |
-        <a href="Forgot.php"> Forgot Password  </a>
-    </div>
+   
     <form method="POST" action="processlogin.php">
         <?php
         //Check if error message is available and print it out
@@ -52,8 +52,15 @@ include_once('lib/header.php'); require('functions/alert.php');
         <p>
             New member? <a href ="register.php"> Sign Up </a>
         </p>
+        <p>
+            <a href ="forgot.php"> Forgot Password </a>
+        </p>
 
     </form>
+
+<?php
+    include_once('lib/footer.php');
+?>
 
 </body>
 
