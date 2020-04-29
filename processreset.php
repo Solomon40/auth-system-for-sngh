@@ -56,7 +56,7 @@ else{//(3)
                 $token_from_db = $token_object->token;
         
         
-                if(!$_SESSION['logged_in']) {
+                if($_SESSION['logged_in']) {
                     $check_token = true;
                 }else{
                     $check_token = $token_from_db == $token;

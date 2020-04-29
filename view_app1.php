@@ -6,6 +6,10 @@ include_once('lib/header.php'); require('functions/alert.php'); require('functio
 <body>
 
 <section>
+    <?php
+        include_once('lib/menu.php');
+    ?>
+    <div class="container">
     <div id="table">
     <?php
     
@@ -41,6 +45,10 @@ include_once('lib/header.php'); require('functions/alert.php'); require('functio
 
     </div>
 </section>
-    
+</div>
+
+<?php  
+    include_once('lib/footer.php');
+?>
 </body>
 </html>

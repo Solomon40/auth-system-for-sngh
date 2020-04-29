@@ -16,11 +16,7 @@
     <div class="content">
     Hey there, kindly enter the email associated with your account:
     </div>
-    <div class="menu">
-        <a href="index.php"> Home </a> |
-        <a href="Register.php"> Register </a> |
-        <a href="Login.php"> Login </a>
-    </div>
+    
     <form method="POST" action="processforgot.php">
         <?php
             //Check if error/message is available and print it out
@@ -41,11 +37,13 @@
             </p>
         </div>
         <p>
-            <button class="btn" type="submit"> Send Reset Code </button>
+            <button class="btn btn-success" type="submit"> Send Reset Code </button>
         </p>
 
         </form> 
-        
+<?php  
+    include_once('lib/footer.php');
+?>    
     
 </body>
 

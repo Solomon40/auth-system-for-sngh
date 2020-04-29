@@ -32,7 +32,7 @@ if(!user_is_logged_in()) {
         <h1> <?php  echo $_SESSION['role']; ?> </h1>
     </div>
 
-    <section>
+    <!-- <section>
     <div id="table">
         <?php
         $patient_rows = get_patients();
@@ -72,7 +72,11 @@ if(!user_is_logged_in()) {
             </tbody>
         </table>
     </div>
-</section>
+</section> -->
+
+<?php  
+    include_once('lib/footer.php');
+?>
 
 </body>
 

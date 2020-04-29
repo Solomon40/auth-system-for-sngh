@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
     <div class="header">
         <h2> Reset Password </h2>
     </div>
@@ -70,13 +73,13 @@
         </p>
         </div>
         <p>
-            <button class="btn" type="submit"> Reset Password </button>
+            <button class="btn btn-success" type="submit"> Reset Password </button>
         </p>
 
     </form>
-    <?php
-      //  include_once('lib/menu.php');
-    ?>
+<?php  
+    include_once('lib/footer.php');
+?>
 </body>
 
 </html>

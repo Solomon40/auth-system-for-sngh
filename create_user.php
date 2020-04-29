@@ -4,6 +4,9 @@ include_once('lib/header.php'); require('functions/alert.php'); ?>
     <title>Super Admin | SNGH: Hospital of the Ignorant</title>
 </head>
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
     <div class="header">
         <h3> Create User </h3>
     </div>
@@ -133,7 +136,7 @@ include_once('lib/header.php'); require('functions/alert.php'); ?>
         </div>
         <div class="input-group">
         <p>
-            <button class="btn" type="submit"> Create </button>
+            <button class="btn btn-success" type="submit"> Create </button>
         </p>
         
         </div>
@@ -151,6 +154,10 @@ include_once('lib/header.php'); require('functions/alert.php'); ?>
             ?>
         type="hidden" name="time" />
     </form>
+<?php  
+    include_once('lib/footer.php');
+?>
+
 </body>
 
 </html>

@@ -11,14 +11,13 @@ if(!user_is_logged_in()) {
 </head>
 
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
     <div class="header">
         <h3> Dashboard </h3>
     </div>
-    <div class="menu">
-        <?php include_once("lib/menu.php") ?>
-        <a href="pay_bill.php"> Pay Bill</a>
-        <a href="book_app.php"> Pay Book Appointment </a>
-    </div>
+    
     <div class="content">
         <div class="error success">
             <h3> <?php  echo $_SESSION['logged_in']; ?> </h3>
@@ -33,6 +32,10 @@ if(!user_is_logged_in()) {
         <h1> <?php  echo $_SESSION['role']; ?> </h1>
     
     </div>
+
+<?php  
+    include_once('lib/footer.php');
+?>
 </body>
 
 </html>

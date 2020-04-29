@@ -34,6 +34,10 @@ if(!user_is_logged_in()) {
         <h1> <?php  echo $_SESSION['role']; ?> </h1>
 
     </div>
+
+<?php  
+    include_once('lib/footer.php');
+?>
 </body>
 
 </html>

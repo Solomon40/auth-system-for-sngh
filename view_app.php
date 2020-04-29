@@ -7,6 +7,9 @@ if(!user_is_logged_in() || $_SESSION['role'] !== "Medical Team (MT)") {
 ?>
 </head>
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
     <form method="POST" action="processviewapp.php">
     <div class="input-group">
         <p>
@@ -21,10 +24,13 @@ if(!user_is_logged_in() || $_SESSION['role'] !== "Medical Team (MT)") {
         </div>
         <div class="input-group">
         <p>
-            <button class="btn" type="submit"> Proceed </button>
+            <button class="btn btn-success" type="submit"> Proceed </button>
         </p>
         </div>
     </form>
 
+<?php  
+    include_once('lib/footer.php');
+?>
 </body>
 </html>

@@ -2,10 +2,16 @@
     <title> Book Appointment | SNGH: Hospital of the Ignorant </title>
 </head>
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
  
-    <h2> Book Appointment </h2>
+    <<div class="header">
+        <h2> Book Appointment </h2>
+    </div>
+    <div class="content">
     Please fill in details of booking below
-
+    </div>
     <form method="POST" action="processappointment.php">
         <?php
         
@@ -98,7 +104,7 @@
         </div>
         
         <p>
-            <button class="btn" type="submit"> Submit </button>
+            <button class="btn btn-success" type="submit"> Submit </button>
         </p>
     </form>
 </body>
