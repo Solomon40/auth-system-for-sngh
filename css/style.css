@@ -52,6 +52,7 @@ form, .content{
     background: #5F9EA0;
     border: none;
     border-radius: 5px;
+    /* cursor: pointer; */
 }
 .error{
     width: 92%;
@@ -86,10 +87,7 @@ form, .content{
     clear: both;
 }  
 
-.img{
-  object-position: center;
-  float: inherit;
-}
+
 
 .no-gutters {
   margin-right: 0;

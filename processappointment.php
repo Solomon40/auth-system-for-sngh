@@ -7,16 +7,16 @@ session_start();
 
 $error_count = 0;
 
-$_POST['date'] !== '' ? $date = $_POST['date']  : $errorCount++;
-$_POST['full_name'] !== '' ? $full_name = $_POST['full_name']  : $errorCount++;
+$date = $_POST['date'] != "" ? $_POST['date']  : $error_count++;
+$full_name = $_POST['full_name'] != "" ? $_POST['full_name']  : $error_count++;
 
 
-$_POST['time'] !== '' ? $time = $_POST['time']  : $errorCount++;
-$_POST['nature'] !== '' ? $nature = $_POST['nature']  : $errorCount++;
+$time = $_POST['time'] != "" ? $_POST['time']  : $error_count++;
+$nature = $_POST['nature'] != "" ? $_POST['nature']  : $error_count++;
 
-$_POST['complaint'] !== '' ? $complaint = $_POST['complaint']  : $errorCount++;
+$complaint = $_POST['complaint'] != "" ? $_POST['complaint']  : $error_count++;
 
-$_POST['department'] !== '' ? $department = $_POST['department']  : $errorCount++;
+$department = $_POST['department'] != "" ? $_POST['department']  : $error_count++;
 
 
 $_SESSION['date'] = $date;

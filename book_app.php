@@ -6,7 +6,7 @@
         include_once('lib/menu.php');
     ?>
  
-    <<div class="header">
+    <div class="header">
         <h2> Book Appointment </h2>
     </div>
     <div class="content">
@@ -21,8 +21,8 @@
         ?>
         <input
             <?php
-            if(user_is_logged_in()) { 
-                echo "value=" . $_SESSION['full_name'] ;
+            if(user_is_logged_in() || isset($_SESSION['full_name'])) { 
+                echo "value='" . $_SESSION['full_name'] . "'" ;
             }
             ?>
          type="hidden" name="full_name"  />
@@ -62,7 +62,7 @@
                 <?php
                 //Check if Email is available after error message (ie if initially inputed by user) and hold it in 
                 if(isset($_SESSION['nature'])){
-                    echo "value=" . $_SESSION['nature'];
+                    echo "value='" . $_SESSION['nature'] . "'";
                 }
                 ?>
             type="text" name="nature" placeholder="Nature" /> 
@@ -107,5 +107,9 @@
             <button class="btn btn-success" type="submit"> Submit </button>
         </p>
     </form>
+
+<?php
+    include_once('lib/footer.php');
+?>
 </body>
 </html>

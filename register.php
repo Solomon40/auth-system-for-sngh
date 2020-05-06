@@ -8,6 +8,14 @@ include_once('lib/header.php'); require('functions/alert.php');
     <?php
         include_once('lib/menu.php');
     ?>
+
+    <?php 
+            if(isset($_SESSION['logged_in'])) { ?>
+                <div class="error success content">
+                    <h3> <?php  echo $_SESSION['logged_in']; ?> </h3>
+                </div>     
+    <?php   } ?>
+
     <!-- <div class="container"> -->
         <div class="row no-gutters">
             <div class="col">

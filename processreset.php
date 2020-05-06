@@ -11,9 +11,10 @@ session_start(); require('functions/alert.php'); require('functions/users.php');
 */ 
 $error_count = 0;
 //(1)
-if(!$_SESSION['logged_in']) {
+if(user_is_logged_in()) {
     $token = $_POST['token'] != "" ? $_POST['token'] : $error_count++;
     $_SESSION['token'] = $token;
+    
 }
 $email = $_POST['email'] != "" ? $_POST['email'] : $error_count++;
 $password = $_POST['password'] != "" ? $_POST['password'] : $error_count++;
@@ -49,14 +50,19 @@ else{//(3)
         $current_token_file = $all_users_tokens[$counter];
     
         
+        if(!user_is_logged_in()) {
+            $check_token_file = true;
+        }else{
+            $check_token_file = $current_token_file == $email . ".json";
+        }
         
-            if($current_token_file == $email . ".json") { //(4)
+            if($check_token_file) { //(4)
                 $user_token = file_get_contents("db/tokens/" . $current_token_file); 
                 $token_object = json_decode($user_token); 
                 $token_from_db = $token_object->token;
         
         
-                if($_SESSION['logged_in']) {
+                if(!user_is_logged_in()) {
                     $check_token = true;
                 }else{
                     $check_token = $token_from_db == $token;

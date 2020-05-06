@@ -29,18 +29,18 @@
         error(); message();
         session_destroy();
         ?>
-        <?php  if(!user_is_logged_in()) { ?>
-        <input
-            <?php 
-                //Check for token associated with email
-                if(token_set_in_sess() ){
-                    echo "value='" . $_SESSION['token'] . "'";
-                }
-                else{
-                    echo "value='" . $_GET['token'] . "'";
-                }
-            ?>
-        type="hidden" name="token"  />
+        <?php  if(!isset($_SESSION['logged_in'])) { ?>
+            <input
+                <?php 
+                    //Check for token associated with email
+                    if(token_set_in_sess() ){
+                        echo "value='" . $_SESSION['token'] . "'";
+                    }
+                    else{
+                        echo "value='" . $_GET['token'] . "'";
+                    }
+                ?>
+            type="hidden" name="token"  />
         <?php } ?>
         <div class="input-group">
 

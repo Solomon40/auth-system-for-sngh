@@ -2,14 +2,14 @@
 
 function message(){
     if(isset($_SESSION['message']) && !empty($_SESSION['message'])){
-        echo "<span style = 'color:green'>" . $_SESSION['message'] . "</span>";
+        echo "<div class = 'alert alert-success'>" . $_SESSION['message'] . "</div>";
     }
     
 }
 
 function error(){
     if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-        echo "<span style = 'color:red'>" . $_SESSION['error'] . "</span>";
+        echo "<div class = 'alert alert-danger'>" . $_SESSION['error'] . "</div>";
     }
     
 }
