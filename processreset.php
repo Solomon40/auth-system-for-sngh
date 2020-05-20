@@ -1,18 +1,25 @@
 <?php 
-session_start();
+session_start(); require('functions/alert.php'); require('functions/users.php');
+
 
 /*To complete Reset:
 *(1) Collect data
-*(2) Verify data: for non-empty fields
+*(2) Verify data: for non-empty fields, for matching new password
 *(3) Check that email is registered in tokens folder
 *(4) Check that content of registered token (in that folder)  is the same as $token (received)
 *(5) Update user data (with new password) in database
 */ 
 $error_count = 0;
 //(1)
-$token = $_POST['token'] != "" ? $_POST['token'] : $error_count++;
+if(user_is_logged_in()) {
+    $token = $_POST['token'] != "" ? $_POST['token'] : $error_count++;
+    $_SESSION['token'] = $token;
+    
+}
 $email = $_POST['email'] != "" ? $_POST['email'] : $error_count++;
 $password = $_POST['password'] != "" ? $_POST['password'] : $error_count++;
+$conf_password = $_POST['conf_password'] != "" ? $_POST['conf_password'] : $error_count++;
+
 
 //(2)
 if(0 < $error_count) {
@@ -21,27 +28,49 @@ if(0 < $error_count) {
     if (1 < $error_count ) {
         $session_error .= "s";
     }
-    $_SESSION['error'] = $session_error . " in your submission. Please review";
+    set_alert("error", $session_error . " in your submission. Please review");
     header("Location: reset.php ");
     
-    $_SESSION['token'] = $token;
+    
     $_SESSION['email'] = $email;
-} 
+
+} elseif($password !== $conf_password) {
+    set_alert("error", "Passwords do no match. Please review");
+    header("Location: reset.php ");
+    
+    if(!user_is_logged_in()) { $_SESSION['token'] = $token; }
+    $_SESSION['email'] = $email;
+}
 else{//(3)
+    
     $all_users_tokens = scandir("db/tokens/"); 
     $count_all_users_tokens = count($all_users_tokens);
 
     for($counter = 0; $counter < $count_all_users_tokens; $counter++) {
         $current_token_file = $all_users_tokens[$counter];
     
-            if($current_token_file == $email . ".json") { //(4)
+        
+        if(!user_is_logged_in()) {
+            $check_token_file = true;
+        }else{
+            $check_token_file = $current_token_file == $email . ".json";
+        }
+        
+            if($check_token_file) { //(4)
                 $user_token = file_get_contents("db/tokens/" . $current_token_file); 
                 $token_object = json_decode($user_token); 
                 $token_from_db = $token_object->token;
-                
-                if($token_from_db = $token){ //(5)
+        
+        
+                if(!user_is_logged_in()) {
+                    $check_token = true;
+                }else{
+                    $check_token = $token_from_db == $token;
+                }
+                if($check_token){ //(5)
                     $all_users = scandir("db/users/"); 
                     $count_all_users = count($all_users);
+                  
                     
                     for($counter = 0; $counter < $count_all_users; $counter++) { 
                         $current_user = $all_users[$counter];
@@ -65,12 +94,13 @@ else{//(3)
 
                             if($try){
                                 //send success message
-                                $_SESSION['message'] = "Password reset successful. You can now login";
+                                set_alert("message", "Password reset successful. You can now login");
                                 header("Location: login.php ");
                             } else{
                                 //send error message
-                                $_SESSION['error'] = "Something went wrong. Password reset link not sent";
+                                set_alert("error", "Something went wrong. Password reset successful, mail not sent");
                                 header("Location: reset.php ");
+                                $_SESSION['email'] = $email;
                             }
                             die();
                         }
@@ -79,7 +109,7 @@ else{//(3)
                 }
             }
     }
-    $_SESSION['error'] = "Password reset failed. Token or email is expired or invalid";
+    set_alert("error", "Password reset failed. Token or email is expired or invalid");
     header("Location: login.php ");    
 }
 ?>

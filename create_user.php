@@ -1,9 +1,12 @@
 <?php 
-include_once('lib/header.php'); ?>
+include_once('lib/header.php'); require('functions/alert.php'); ?>
 
-    <title>Super Admin SNGH: Hospital of the Ignorant</title>
+    <title>Super Admin | SNGH: Hospital of the Ignorant</title>
 </head>
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
     <div class="header">
         <h3> Create User </h3>
     </div>
@@ -14,10 +17,8 @@ include_once('lib/header.php'); ?>
 
     <form method="POST" action="processcreate.php">
         <?php
-        //Check if error message is available and print it out
-        if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-        echo "<span style = 'color:red'>" . $_SESSION['error'] . "</span>";
-        }
+        //Check if error/message is available and print it out
+        error(); message();
         session_destroy();
         ?>
         <div class="input-group">
@@ -135,7 +136,7 @@ include_once('lib/header.php'); ?>
         </div>
         <div class="input-group">
         <p>
-            <button class="btn" type="submit"> Create </button>
+            <button class="btn btn-success" type="submit"> Create </button>
         </p>
         
         </div>
@@ -153,6 +154,10 @@ include_once('lib/header.php'); ?>
             ?>
         type="hidden" name="time" />
     </form>
+<?php  
+    include_once('lib/footer.php');
+?>
+
 </body>
 
 </html>

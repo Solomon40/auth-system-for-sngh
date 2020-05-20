@@ -1,29 +1,26 @@
 <?php
-    include_once('lib/header.php');
+    include_once('lib/header.php'); require('functions/alert.php'); require('functions/users.php');
 ?>
 
-    <title> Reset Password for SNGH: Hospital for the Ignorant </title>
+    <title> Forgot Password | SNGH: Hospital for the Ignorant </title>
 
 </head>
 
 <body>
-<div class="header">
+    <?php
+        include_once('lib/menu.php');
+    ?>
+    <div class="header">
         <h3> Forgot Password </h3>
     </div>
     <div class="content">
     Hey there, kindly enter the email associated with your account:
     </div>
-    <div class="menu">
-        <a href="index.php"> Home </a> |
-        <a href="Register.php"> Register </a> |
-        <a href="Login.php"> Login </a>
-    </div>
+    
     <form method="POST" action="processforgot.php">
         <?php
-            //Check if error message is available and print it out
-            if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-                echo "<span style = 'color:red'>" . $_SESSION['error'] . "</span>";
-            }
+            //Check if error/message is available and print it out
+            error(); message();
             session_destroy(); 
         ?>
         <div class="input-group">   
@@ -40,11 +37,13 @@
             </p>
         </div>
         <p>
-            <button class="btn" type="submit"> Send Reset Code </button>
+            <button class="btn btn-success" type="submit"> Send Reset Code </button>
         </p>
 
         </form> 
-        
+<?php  
+    include_once('lib/footer.php');
+?>    
     
 </body>
 

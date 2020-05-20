@@ -1,8 +1,10 @@
-* {margin: 0px; padding: 0px; }
-body{
+  * {margin: 0px; padding: 0px; } 
+
+ body{
     font-size: 120%;
     background: #F8F8FF;
-}
+}  
+
 .header{
     width: 40%;
     margin: 50px auto 0px;
@@ -13,10 +15,8 @@ body{
     border-bottom: none;
     border-radius: 1px;
     padding: 20px;
-}
-.menu{
-    text-align: center;
-}
+} 
+
 form, .content{
     width: 40%;
     margin: 0px auto;
@@ -24,7 +24,7 @@ form, .content{
     border: 1px solid #B0C4DE;
     background: white;
     border-radius: 0px 0px 10px 10px;
-}
+} 
 .input-group{
     margin: 10px 0px 10px 0px;
 }
@@ -44,7 +44,7 @@ form, .content{
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid gray;
-}
+}  
 .btn{
     padding: 10px;
     font-size: 15px;
@@ -52,6 +52,7 @@ form, .content{
     background: #5F9EA0;
     border: none;
     border-radius: 5px;
+    /* cursor: pointer; */
 }
 .error{
     width: 92%;
@@ -84,4 +85,56 @@ form, .content{
     content: "";
     display: block;
     clear: both;
+}  
+
+
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  html {
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  .container {
+    max-width: 960px;
+  }
+  
+  .pricing-header {
+    max-width: 700px;
+  }
+  
+  .card-deck .card {
+    min-width: 220px;
+  }
+
+
+
+  /*.bg{background:#7b7b7c 50% no-repeat url(back-pool.jpg); background-size:cover;-webkit-animation:30s linear infinite a;animation:30s linear infinite a;background-size:cover;height:100%;left:0;position:absolute;top:0;width:calc(100vw + 500px)} */

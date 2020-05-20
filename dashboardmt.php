@@ -1,22 +1,23 @@
 <?php 
-include_once('lib/header.php'); 
+include_once('lib/header.php'); require('functions/alert.php'); require('functions/users.php');
 
 //Must be Logged In to access Dashboard page
-if(!isset($_SESSION['logged_in'])) {
+if(!user_is_logged_in()) {
     header("Location: login.php");
-    $_SESSION['error'] = "You must be Logged In to view the Dashbboard!";
+    set_alert("error", "You must be Logged In to view the Dashboard!");
 }
 ?>
-    <title>Dashboard SNGH: Hospital of the Ignorant</title>
+    <title>Dashboard | SNGH: Hospital of the Ignorant</title>
 </head>
 
 <body>
+    <?php
+        include_once('lib/menu.php');
+    ?>
     <div class="header">
         <h3> Dashboard </h3>
     </div>
-    <div class="menu">
-        <?php include_once("lib/menu.php") ?>
-    </div>
+        
     <div class="content">
         <div class="error success">
             <h3> <?php  echo $_SESSION['logged_in']; ?> </h3>
@@ -33,6 +34,10 @@ if(!isset($_SESSION['logged_in'])) {
         <h1> <?php  echo $_SESSION['role']; ?> </h1>
 
     </div>
+
+<?php  
+    include_once('lib/footer.php');
+?>
 </body>
 
 </html>
